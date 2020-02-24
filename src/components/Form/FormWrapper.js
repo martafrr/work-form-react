@@ -6,7 +6,7 @@ import {
 import HeaderText from '../UI/HeaderText';
 import LocationInput from './LocationInput';
 
-const Form = () => {
+const FormWrapper = () => {
   	return (
         <div style={formBackgorund}>
             <div style={formWrapper}>
@@ -19,4 +19,4 @@ const Form = () => {
   	);
 }
 
-export default Form;
+export default FormWrapper;

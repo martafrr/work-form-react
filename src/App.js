@@ -1,13 +1,13 @@
 import React from 'react';
 import { StyleRoot } from 'radium';
 import './App.css';
-import Form from './components/Form/Form';
+import FormWrapper from './components/Form/FormWrapper';
 
 const App = () => {
   	return (
 		<StyleRoot>
 			<div className="App">
-				<Form />
+				<FormWrapper />
 			</div>
 		</StyleRoot>
   	);
