@@ -1,21 +1,32 @@
 import React from 'react';
-import { 
-    formWrapper,
-    formBackgorund,
-} from './formStyles';
-import HeaderText from '../UI/HeaderText';
-import LocationInput from './LocationInput';
+import styled from 'styled-components';
+import SearchWorkForm from './SearchWorkForm';
+import backgroundImg from '../../assets/xing.png';
+import H2 from '../../UI-design-system/H2';
+
+const FormWrapperDiv = styled.div`
+    margin: 40px auto;
+    width: 984px;
+    height: 400px;
+    background-image: url(${backgroundImg});
+`;
+
+const FormContainer = styled.div`
+    background-color:rgb(6, 134, 140, .6);
+    height: 100%;
+    width: 100%;
+`;
 
 const FormWrapper = () => {
   	return (
-        <div style={formBackgorund}>
-            <div style={formWrapper}>
-			    <HeaderText firstLine={true}>For a better working life</HeaderText>
-			    <HeaderText firstLine={false}>The new XING Jobs</HeaderText>
+        <FormWrapperDiv>
+            <FormContainer>
+			    <H2 firstLine={true}>For a better working life</H2>
+			    <H2 firstLine={false}>The new XING Jobs</H2>
 
-                <LocationInput />
-		    </div>
-        </div>
+                <SearchWorkForm />
+		    </FormContainer>
+        </FormWrapperDiv>
   	);
 }
 
