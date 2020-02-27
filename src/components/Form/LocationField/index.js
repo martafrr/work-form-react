@@ -7,7 +7,7 @@ import {
     fetchLocation,
     setClickedLocation,
 } from '../../../store/actions/formActions';
-import { locationListSelector, locationSelector } from '../../../store/selectors/formSelector';
+import { locationListSelector, locationSelector } from '../../../store/selectors/formSelectors';
 import {
     LocationInput,
     LocationListContainer,

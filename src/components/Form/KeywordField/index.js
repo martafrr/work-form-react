@@ -12,7 +12,7 @@ import {
 } from './KeywordFieldStyles';
 import CategoriesMenu from './CategoriesMenu/index';
 import { changeKeywordValue } from '../../../store/actions/formActions';
-import { keywordSelector } from '../../../store/selectors/formSelector';
+import { keywordSelector } from '../../../store/selectors/formSelectors';
 
 class KeywordField extends Component {
     state = {

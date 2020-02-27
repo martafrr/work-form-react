@@ -11,7 +11,7 @@ import { checkAllCategories } from '../../../../store/actions/formActions';
 import {
     selectTopCategories,
     selectMoreCategories,
-} from '../../../../store/selectors/formSelector';
+} from '../../../../store/selectors/formSelectors';
 import CategoryList from './CategoryList/index';
 
 const CategoriesMenu = ({ 

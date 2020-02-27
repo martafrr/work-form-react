@@ -8,7 +8,7 @@ import {
     locationSelector,
     selectTopCategoriesChecked,
     selectMoreCategoriesChecked,
-} from '../../store/selectors/formSelector';
+} from '../../store/selectors/formSelectors';
 import { clearForm } from '../../store/actions/formActions';
 
 const Form = styled.form`
