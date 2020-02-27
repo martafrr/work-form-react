@@ -1,11 +1,20 @@
-export const selectKeyword = state => 
+export const selectTopCategories = state => 
+    state.form.categoryList.topCategoriesData;
+
+export const selectTopCategoriesChecked = state => 
+    state.form.topCategoriesChecked;
+
+export const selectMoreCategoriesChecked = state => 
+    state.form.moreCategoriesChecked;
+
+export const selectMoreCategories = state => 
+    state.form.categoryList.moreCategoriesData;
+
+export const keywordSelector = state => 
     state.form.keyword;
 
-export const selectShowCateggoriesList = state => 
-    state.form.showCateggoriesList;
-
-export const selectActiveCategory = state => 
-    state.form.activeCategory;
-
-export const selectLocation = state => 
+export const locationSelector = state => 
     state.form.location;
+
+export const locationListSelector = state =>
+    state.form.locationList;
