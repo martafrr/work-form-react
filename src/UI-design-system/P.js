@@ -7,4 +7,4 @@ export default styled.p`
     margin: ${props => (props.margin ? props.margin : '')};
     color: ${props => (props.color ? props.color : 'black')};
     font-weight: ${props => (props.fontWeight ? props.fontWeight : '')};
-`
+`;
