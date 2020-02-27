@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { reduxForm, reset } from 'redux-form';
 import styled from 'styled-components';
-import KeywordField from './KeywordField';
-import LocationField from './LocationField';
+import KeywordField from './KeywordField/index';
+import LocationField from './LocationField/index';
 import Button from '../../UI-design-system/Button';
+import {
+    locationSelector,
+    selectTopCategoriesChecked,
+    selectMoreCategoriesChecked,
+} from '../../store/selectors/formSelector';
+import { clearForm } from '../../store/actions/formActions';
 
 const Form = styled.form`
     display: flex;
@@ -13,37 +18,44 @@ const Form = styled.form`
 `
 
 class SearchWorkForm extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            /// TODO
-        };
-    }
-
-    handleSubmit = e => {
-        console.log('clicked')
+    handleClick = e => {
         e.preventDefault();
-        this.props.clearForm();
+        const { 
+            location, 
+            clearForm, 
+            topCategoriesChecked,
+            moreCategoriesChecked,
+        } = this.props;
+        console.log('Form Submited');
+        console.log('selectedcCategories:', topCategoriesChecked, moreCategoriesChecked);
+        console.log('location:', location);
+        clearForm();
     }
 
   	render() {
         return (
-            <Form onSubmit={this.handleSubmit}>
+            <Form>
                 <KeywordField />
                 <LocationField />
-                <Button marginTop="3px" type="submit">Search</Button>
+                <Button marginTop="3px" type="submit" onClick={this.handleClick}>
+                    Search
+                </Button>
             </Form>
         );
     }
 }
 
-const mapDispatchToProps = (dispatch) => ({
-    clearForm: () => dispatch(reset('searchWorkForm')),
+const mapStateToProps = state => ({
+    location: locationSelector(state),
+    topCategoriesChecked: selectTopCategoriesChecked(state),
+    moreCategoriesChecked: selectMoreCategoriesChecked(state),
 });
 
-SearchWorkForm = connect(mapDispatchToProps)(SearchWorkForm);
+const mapDispatchToProps = (dispatch) => ({
+    clearForm: () => dispatch(clearForm()),
+});
 
-export default reduxForm({
-    form: 'searchWorkForm',
-})(SearchWorkForm);
+export default connect(mapStateToProps, mapDispatchToProps)(SearchWorkForm);
+
+
 
