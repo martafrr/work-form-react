@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSortDown } from '@fortawesome/free-solid-svg-icons';
@@ -14,42 +14,34 @@ import CategoriesMenu from './CategoriesMenu/index';
 import { changeKeywordValue } from '../../../store/actions/formActions';
 import { keywordSelector } from '../../../store/selectors/formSelectors';
 
-class KeywordField extends Component {
-    state = {
-        showCategories: false,
-    };
+export const KeywordField = ({ keywordValue, changeKeywordValue }) => {
+    const [showCategories, setShowCategories] = useState(false)
 
-    toggleShowCategories = e => {
-        e.preventDefault();
-        this.setState({ showCategories: !this.state.showCategories});
-    }
-
-  	render() {
-        const { showCategories } = this.state;
-        const { keywordValue, changeKeywordValue } = this.props;
-        return (
-            <div>
-                <InputFieldWrapper>
-                    <InputWrapper>
-                        <KeywordInput
-                            value={keywordValue}
-                            placeholder="Enter keyword" 
-                            type="text"
-                            onChange={(e) => changeKeywordValue(e.target.value)}
-                        />
-                    </InputWrapper>
-                    <CategoriesButton onClick={this.toggleShowCategories}>
-                        <P margin="12px" color="grey" width="173px">in all categories</P>
-                        <FontAwesomeIcon style={{marginBottom: '2px'}} icon={faSortDown} />
-                    </CategoriesButton>
-                </InputFieldWrapper>
-                {showCategories && <CategoriesWrapper>
-                    <CategoriesMenu />
-                </CategoriesWrapper>}
-            </div>
-        );
-    }
-}
+    return (
+        <div>
+            <InputFieldWrapper data-test="input-field-wrapper">
+                <InputWrapper>
+                    <KeywordInput
+                        value={keywordValue}
+                        placeholder="Enter keyword" 
+                        type="text"
+                        onChange={e => changeKeywordValue(e.target.value)}
+                    />
+                </InputWrapper>
+                <CategoriesButton 
+                    onClick={() => setShowCategories(!showCategories)} 
+                    id="toggle-show-cat"
+                >
+                    <P margin="12px" color="grey" width="173px">in all categories</P>
+                    <FontAwesomeIcon style={{marginBottom: '2px'}} icon={faSortDown} />
+                </CategoriesButton>
+            </InputFieldWrapper>
+            {showCategories && <CategoriesWrapper>
+                <CategoriesMenu />
+            </CategoriesWrapper>}
+        </div>
+    );
+};
 
 const mapStateToProps = state => ({
     keywordValue: keywordSelector(state),
