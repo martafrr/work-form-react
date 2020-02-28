@@ -7,14 +7,16 @@ import {
     CHANGE_LOCATION_VALUE,
     SELECT_LOCATION,
     CLEAR_FORM,
+    CHECK_ALL_CATEGORIES,
 } from '../actions/formActions';
 
-const initialState = {
+export const initialState = {
     locationList: [],
     location: '',
     keyword: '',
-    topCategoriesChecked: [],
-    moreCategoriesChecked: [],
+    // topCategoriesChecked: [],
+    // moreCategoriesChecked: [],
+    categoriesChecked: [],
     loading: false,
     fetchingError: '',
     categoryList: {
@@ -29,7 +31,7 @@ const initialState = {
             "Finance and accounting (1979)"
         ],
         moreCategoriesData: [
-            "Not cateforized (1468)",
+            "Not categorized (1468)",
             "Banking, insurance and financial services (1342)",
             "Purchasing, transport and logistics (719)",
             "Administration (1439)",
@@ -76,7 +78,14 @@ export default (state=initialState, action) => {
         case RESET_CATEGORIES: {
             return {
                 ...state,
-                [action.payload.typeOfCat]: action.payload.data
+                categoriesChecked: action.payload
+            }
+        }
+        case CHECK_ALL_CATEGORIES: {
+            return {
+                ...state,
+                topCategoriesChecked: [...state.categoryList.topCategoriesData],
+                moreCategoriesChecked: [...state.categoryList.moreCategoriesData],
             }
         }
         case CHANGE_LOCATION_VALUE: {

@@ -11,6 +11,11 @@ export const CHANGE_LOCATION_VALUE = 'CHANGE_LOCATION_VALUE';
 export const SELECT_LOCATION = 'SELECT_LOCATION';
 export const CLEAR_FORM = 'CLEAR_FORM';
 
+export const changeLocationValue = value => ({
+    type: CHANGE_LOCATION_VALUE,
+    payload: value
+});
+
 const fetchLocationRequest = () => ({
     type: FETCH_LOCATION_REQUEST,
 });
@@ -33,11 +38,6 @@ const fetchLocationFailure = error => ({
     payload: error
 });
 
-export const changeLocationValue = value => ({
-    type: CHANGE_LOCATION_VALUE,
-    payload: value
-});
-
 export const fetchLocation = query => {
     return dispatch => {
         dispatch(fetchLocationRequest());
@@ -56,38 +56,25 @@ export const fetchLocation = query => {
     };
 }
 
-export const changeKeywordValue = keyword => {
-    return {
-        type: CHANGE_KEYWORD_VALUE,
-        payload: keyword
-    }
-}
+export const changeKeywordValue = keyword => ({
+    type: CHANGE_KEYWORD_VALUE,
+    payload: keyword
+});
 
-export const resetCategories = (data, typeOfCat) => {
-    return {
-        type: RESET_CATEGORIES,
-        payload: {
-            typeOfCat,
-            data
-        }
-    }
-}
+export const resetCategories = data => ({
+    type: RESET_CATEGORIES,
+    payload: data
+});
 
-export const checkAllCategories = () => {
-    return {
-        type: CHECK_ALL_CATEGORIES,
-    }
-}
+export const checkAllCategories = () => ({
+    type: CHECK_ALL_CATEGORIES
+});
 
-export const setClickedLocation = location => {
-    return {
-        type: SELECT_LOCATION,
-        payload: location
-    }
-}
+export const setClickedLocation = location => ({
+    type: SELECT_LOCATION,
+    payload: location
+});
 
-export const clearForm = () => {
-    return {
-        type: CLEAR_FORM,
-    }
-}
+export const clearForm = () => ({
+    type: CLEAR_FORM,
+});

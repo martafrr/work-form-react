@@ -8,6 +8,7 @@ import {
     CHANGE_LOCATION_VALUE,
     SELECT_LOCATION,
     CLEAR_FORM,
+    CHECK_ALL_CATEGORIES,
 } from '../actions/formActions';
 
 describe('Form reducer', () => {
@@ -31,7 +32,7 @@ describe('Form reducer', () => {
                 "Finance and accounting (1979)"
             ],
             moreCategoriesData: [
-                "Not cateforized (1468)",
+                "Not categorized (1468)",
                 "Banking, insurance and financial services (1342)",
                 "Purchasing, transport and logistics (719)",
                 "Administration (1439)",
@@ -125,6 +126,17 @@ describe('Form reducer', () => {
         });
     });
 
+    it('should return expected state when CHECK_ALL_CATEGORIES', () => {
+        const action = { type: CHECK_ALL_CATEGORIES };
+        const newState = formReducer(mockState, action);
+        
+        expect(newState).toEqual({
+            ...mockState,
+            topCategoriesChecked: [...mockState.categoryList.topCategoriesData],
+            moreCategoriesChecked: [...mockState.categoryList.moreCategoriesData],
+        });
+    });
+    
     it('should return expected state when CHANGE_LOCATION_VALUE', () => {
         const payload = "frankfurt";
         const action = {
