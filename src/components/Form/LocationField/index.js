@@ -50,7 +50,6 @@ const LocationField = ({
                     placeholder="Location"
                     type="text"
                     onChange={e => changeValueInput(e.target.value)}
-                    required
                 />
             </InputWrapper>
             <LocationListContainer>
