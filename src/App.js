@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleRoot } from 'radium';
 import './App.css';
-import FormWrapper from './components/Form/FormWrapper';
+import FormWrapper from './components/Form/FormWrapper/index';
 
 const App = () => {
   	return (
