@@ -7,15 +7,12 @@ import {
     CHANGE_LOCATION_VALUE,
     SELECT_LOCATION,
     CLEAR_FORM,
-    CHECK_ALL_CATEGORIES,
 } from '../actions/formActions';
 
 export const initialState = {
     locationList: [],
     location: '',
     keyword: '',
-    // topCategoriesChecked: [],
-    // moreCategoriesChecked: [],
     categoriesChecked: [],
     loading: false,
     fetchingError: '',
@@ -47,6 +44,7 @@ export const initialState = {
 }
 
 export default (state=initialState, action) => {
+    const { payload } = action;
     switch(action.type) {
         case FETCH_LOCATION_REQUEST: {
             return {
@@ -58,7 +56,7 @@ export default (state=initialState, action) => {
             return {
                 ...state,
                 loading: false,
-                locationList: action.payload,
+                locationList: payload,
                 fetchingError: '',
             }
         }
@@ -66,38 +64,32 @@ export default (state=initialState, action) => {
             return {
                 ...state,
                 loading: false,
-                fetchingError: action.payload,
+                fetchingError: payload,
             }
         }
         case CHANGE_KEYWORD_VALUE: {
             return {
                 ...state,
-                keyword: action.payload,
+                keyword: payload,
             }
         }
         case RESET_CATEGORIES: {
             return {
                 ...state,
-                categoriesChecked: action.payload
+                categoriesChecked: payload
             }
         }
-        case CHECK_ALL_CATEGORIES: {
-            return {
-                ...state,
-                topCategoriesChecked: [...state.categoryList.topCategoriesData],
-                moreCategoriesChecked: [...state.categoryList.moreCategoriesData],
-            }
-        }
+       
         case CHANGE_LOCATION_VALUE: {
             return {
                 ...state,
-                location: action.payload,
+                location: payload,
             }
         }
         case SELECT_LOCATION: {
             return {
                 ...state,
-                location: action.payload,
+                location: payload,
                 locationList: [],
             }
         }

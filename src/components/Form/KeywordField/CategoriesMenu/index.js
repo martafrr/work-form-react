@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import {
     CategoryTitleWrapper,
@@ -23,12 +23,12 @@ const CategoriesMenu = ({
 }) => {
     const onChange = (e, categoryType) => {
         if(categoriesChecked.indexOf(e.target.value) === -1) {
-            resetCategories([...categoriesChecked, e.target.value], categoryType);
+            resetCategories([...categoriesChecked, e.target.value]);
         } else {
             const updatedCheckedCat = categoriesChecked.filter(cat =>
                 cat !== e.target.value  
             );
-            resetCategories(updatedCheckedCat, categoryType);
+            resetCategories(updatedCheckedCat);
         }
     };
 

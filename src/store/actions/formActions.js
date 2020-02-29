@@ -5,7 +5,6 @@ export const FETCH_LOCATION_SUCCESS = 'FETCH_LOCATION_SUCCESS';
 export const FETCH_LOCATION_FAILURE = 'FETCH_LOCATION_FAILURE';
 export const CHANGE_KEYWORD_VALUE = 'CHANGE_KEYWORD_VALUE';
 export const CHECK_CATEGORY = 'CHECK_CATEGORY';
-export const CHECK_ALL_CATEGORIES = 'CHECK_ALL_CATEGORIES';
 export const RESET_CATEGORIES = 'RESET_CATEGORIES';
 export const CHANGE_LOCATION_VALUE = 'CHANGE_LOCATION_VALUE';
 export const SELECT_LOCATION = 'SELECT_LOCATION';
@@ -64,10 +63,6 @@ export const changeKeywordValue = keyword => ({
 export const resetCategories = data => ({
     type: RESET_CATEGORIES,
     payload: data
-});
-
-export const checkAllCategories = () => ({
-    type: CHECK_ALL_CATEGORIES
 });
 
 export const setClickedLocation = location => ({
