@@ -1,7 +1,6 @@
 import {
     selectTopCategories,
-    selectTopCategoriesChecked,
-    selectMoreCategoriesChecked,
+    selectCategoriesChecked,
     selectMoreCategories,
     keywordSelector,
     locationSelector,
@@ -14,13 +13,12 @@ describe('Form selectors', () => {
             locationList: ['Bergen, Berlin'],
             location: 'Barcelina',
             keyword: 'Frontend Developer',
-            topCategoriesChecked: ['IT'],
-            moreCategoriesChecked: ['Training'],
+            categoriesChecked: ['IT'],
             loading: false,
             fetchingError: '',
             categoryList: {
                 topCategoriesData: ['IT', 'Training'],
-                moreCategoriesData: ['Not cateforized', 'Training'],
+                moreCategoriesData: ['Not categorized', 'Training'],
             },
         }
     }
@@ -29,16 +27,12 @@ describe('Form selectors', () => {
         expect(selectTopCategories(mockState)).toEqual(['IT', 'Training']);
     });
 
-    it('selectTopCategoriesChecked should return the expected value', () => {
-        expect(selectTopCategoriesChecked(mockState)).toEqual(['IT']);
-    });
-
-    it('selectMoreCategoriesChecked should return the expected value', () => {
-        expect(selectMoreCategoriesChecked(mockState)).toEqual(['Training']);
+    it('selectCategoriesChecked should return the expected value', () => {
+        expect(selectCategoriesChecked(mockState)).toEqual(['IT']);
     });
 
     it('selectMoreCategories should return the expected value', () => {
-        expect(selectMoreCategories(mockState)).toEqual(['Not cateforized', 'Training']);
+        expect(selectMoreCategories(mockState)).toEqual(['Not categorized', 'Training']);
     });
 
     it('keywordSelector should return the expected value', () => {

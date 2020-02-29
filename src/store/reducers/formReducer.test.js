@@ -8,7 +8,6 @@ import {
     CHANGE_LOCATION_VALUE,
     SELECT_LOCATION,
     CLEAR_FORM,
-    CHECK_ALL_CATEGORIES,
 } from '../actions/formActions';
 
 describe('Form reducer', () => {
@@ -16,8 +15,7 @@ describe('Form reducer', () => {
         locationList: [],
         location: '',
         keyword: '',
-        topCategoriesChecked: [],
-        moreCategoriesChecked: [],
+        categoriesChecked: [],
         loading: false,
         fetchingError: '',
         categoryList: {
@@ -110,10 +108,8 @@ describe('Form reducer', () => {
     });
 
     it('should return expected state when RESET_CATEGORIES', () => {
-        const payload = {
-            typeOfCat: 'topCategoriesChecked',
-            data: [1,2,3]
-        };
+        const payload = [1,2,3];
+
         const action = {
             type: RESET_CATEGORIES,
             payload
@@ -122,18 +118,7 @@ describe('Form reducer', () => {
         
         expect(newState).toEqual({
             ...mockState,
-            [payload.typeOfCat]: payload.data,
-        });
-    });
-
-    it('should return expected state when CHECK_ALL_CATEGORIES', () => {
-        const action = { type: CHECK_ALL_CATEGORIES };
-        const newState = formReducer(mockState, action);
-        
-        expect(newState).toEqual({
-            ...mockState,
-            topCategoriesChecked: [...mockState.categoryList.topCategoriesData],
-            moreCategoriesChecked: [...mockState.categoryList.moreCategoriesData],
+            categoriesChecked: payload,
         });
     });
     
@@ -167,10 +152,8 @@ describe('Form reducer', () => {
     });
 
     it('should return expected state when CLEAR_FORM', () => {
-        const payload = "something";
         const action = {
-            type: CLEAR_FORM,
-            payload
+            type: CLEAR_FORM
         }
         const newState = formReducer(mockState, action);
         
