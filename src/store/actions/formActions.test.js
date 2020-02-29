@@ -1,5 +1,5 @@
-import { apiMiddleware } from 'redux-api-middleware';
 import configureMockStore from 'redux-mock-store';
+import thunk from 'redux-thunk';
 import { initialState } from '../reducers/formReducer';
 import { 
     FETCH_LOCATION_REQUEST,
@@ -9,19 +9,18 @@ import {
     RESET_CATEGORIES,
     CHANGE_LOCATION_VALUE,
     SELECT_LOCATION,
-    CHECK_ALL_CATEGORIES,
     CLEAR_FORM,
     changeLocationValue,
     fetchLocation,
     changeKeywordValue,
     resetCategories,
-    checkAllCategories,
     setClickedLocation,
     clearForm,
 } from './formActions';
 
-const createStore = configureMockStore([apiMiddleware]);
+const createStore = configureMockStore([thunk]);
 let store;
+
 
 describe('form actions', () => {
     beforeEach(() => {
@@ -38,10 +37,18 @@ describe('form actions', () => {
         expect(actions[0].payload).toEqual('Berlin');    
     });
 
-    it('fetchLocation should return expected payload', () => {
-        // TODO
-        const actions=[]
-        expect(actions[0].type).toEqual('');  
+    describe('fetchLocation', () => {
+        it('should call fetchLocationRequest', async () => {
+            await store.dispatch(fetchLocation('berlin'))
+            const actions = store.getActions();
+            expect(actions[0].type).toEqual(FETCH_LOCATION_REQUEST);  
+        });
+    
+        it('should call fetchLocationSuccess', async () => {
+            await store.dispatch(fetchLocation('berlin'))
+            const actions = store.getActions();
+            expect(actions[1].type).toEqual(FETCH_LOCATION_SUCCESS);
+        });
     });
 
     it('changeKeywordValue should return expected payload', () => {
@@ -55,22 +62,13 @@ describe('form actions', () => {
     });
 
     it('resetCategories should return expected payload', () => {
-        const typeOfCat = 'topCategoriesChecked';
         const data = [ "IT and telecommunication (4440)"];
 
-        store.dispatch(resetCategories(data, typeOfCat));
+        store.dispatch(resetCategories(data));
         const actions = store.getActions();
         
         expect(actions[0].type).toEqual(RESET_CATEGORIES);  
-        expect(actions[0].payload.typeOfCat).toEqual('topCategoriesChecked');
-        expect(actions[0].payload.data).toEqual([ "IT and telecommunication (4440)"]);
-    });
-
-    it('checkAllCategories should return expected payload', () => {
-        store.dispatch(checkAllCategories());
-        const actions = store.getActions();
-        
-        expect(actions[0].type).toEqual(CHECK_ALL_CATEGORIES);  
+        expect(actions[0].payload).toEqual([ "IT and telecommunication (4440)"]);
     });
 
     it('setClickedLocation should return expected payload', () => {

@@ -44,7 +44,7 @@ export const fetchLocation = query => {
         const proxyurl = "https://cors-anywhere.herokuapp.com/";
         const url = `http://gd.geobytes.com/AutoCompleteCity?callback=?&filter=DE&q=${query}`; 
         
-        axios
+        return axios
             .get(proxyurl + url)
             .then(response => {
                 dispatch(fetchLocationSuccess(response.data));
