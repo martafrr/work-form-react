@@ -15,7 +15,7 @@ const CategoryList = ({
         const isChecked = categoriesChecked.indexOf(category) > -1 ? true : false;
 
         return (
-            <CategoryContainer key={`${index}-${category}`}>
+            <CategoryContainer key={`${index}-${category}`} data-test="category-container">
                 <CategoryLabel>
                     <input
                         checked={isChecked}
