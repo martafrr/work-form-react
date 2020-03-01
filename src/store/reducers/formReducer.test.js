@@ -40,7 +40,6 @@ describe('Form reducer', () => {
                 "More on advertising (1304)",
                 "More on administration (1439)",
                 "More on logistics (719)",
-                "More on transport (719)"
             ],
         },
     };

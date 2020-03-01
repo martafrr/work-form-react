@@ -3,7 +3,7 @@ import P from '../../../../UI-design-system/P';
 import Button from '../../../../UI-design-system/Button';
 
 export const CategoriesContainer = styled.div`
-    height: 399px;
+    height: 370px;
     background-color: white;
     border-radius: 3px;
 `;

@@ -63,7 +63,7 @@ export const CategoriesMenu = ({
             <CategoryTitleWrapper>
                 <CategoryTitle>More Categories</CategoryTitle>
             </CategoryTitleWrapper>
-            <CategoryListWrapper height="150px" direction="row">
+            <CategoryListWrapper height="124px" direction="row">
                 <CategoryList
                     onChange={onChange}
                     categoryType="moreCategoriesChecked"
