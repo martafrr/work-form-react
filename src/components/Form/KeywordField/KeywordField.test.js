@@ -8,9 +8,6 @@ configure({adapter: new Adapter()});
 
 describe('KeywordField Component', () => {
     let component;
-    const setState = jest.fn();
-    const useStateSpy = jest.spyOn(React, 'useState');
-    useStateSpy.mockImplementation((init) => [init, setState]);
 
     const mockChangeKeywordValue = jest.fn();
     const mockProps = {
@@ -50,13 +47,4 @@ describe('KeywordField Component', () => {
         const callback = mockChangeKeywordValue.mock.calls.length;
         expect(callback).toBe(1);
     });
-
-    // TODO
-    // it('categories button onClick changes state as expected', () => {
-    //     const btn = findByTestAtr(component, 'toggle-btn');
-
-    //     btn.simulate('click', event);
-
-    //     expect(setState).toHaveBeenCalled();
-    // });
 });

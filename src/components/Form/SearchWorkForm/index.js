@@ -6,6 +6,7 @@ import KeywordField from '../KeywordField/index';
 import LocationField from '../LocationField/index';
 import Button from '../../../UI-design-system/Button';
 import {
+    keywordSelector,
     locationSelector,
     selectCategoriesChecked,
 } from '../../../store/selectors/formSelectors';
@@ -18,23 +19,25 @@ const Form = styled.form`
 `
 
 export const SearchWorkForm = ({ 
+    keyword,
     location, 
     clearForm, 
     categoriesChecked,
 }) => {
-    const handleClick = e => {
+    const handleSubmit = e => {
         e.preventDefault();
         console.log('Form Submited');
+        console.log('keyword:', keyword);
         console.log('selected categories:', ...categoriesChecked);
         console.log('location:', location);
         clearForm();
     }
 
     return (
-        <Form data-test="search-work-form">
+        <Form data-test="search-work-form" onSubmit={handleSubmit}>
             <KeywordField />
-            <LocationField />
-            <Button marginTop="3px" type="submit" onClick={handleClick}>
+            <LocationField submitForm={handleSubmit}/>
+            <Button marginTop="3px" type="submit">
                 Search
             </Button>
         </Form>
@@ -42,6 +45,7 @@ export const SearchWorkForm = ({
 }
 
 const mapStateToProps = state => ({
+    keyword: keywordSelector(state),
     location: locationSelector(state),
     categoriesChecked: selectCategoriesChecked(state),
 });

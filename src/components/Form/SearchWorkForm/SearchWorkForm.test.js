@@ -10,10 +10,11 @@ const setup = (props) => shallow(<SearchWorkForm {...props} />);
 describe('SearchWorkForm Component', () => {
     let component;
 
+    const mockClearForm = jest.fn();
     const mockProps = {
         location: 'Barcelona',
         categoriesChecked: ['IT'],
-        clearForm: jest.fn()
+        clearForm: mockClearForm,
     }
     beforeEach(() => {
         component = setup(mockProps);
@@ -38,5 +39,15 @@ describe('SearchWorkForm Component', () => {
         const propsErr = checkProps(SearchWorkForm, expectedProps);
         
         expect(propsErr).toBe(undefined);
+    });
+
+    it('should call handleSubmit when onSubmit', () => {
+        const form = findByTestAtr(component, 'search-work-form');
+        const event = {
+            preventDefault() {},
+        };
+        form.simulate('submit', event);
+
+        expect(mockClearForm).toHaveBeenCalled();
     });
 });
