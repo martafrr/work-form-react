@@ -16,6 +16,7 @@ import {
 } from './LocationFieldStyles';
 
 export const LocationField = ({
+    submitForm,
     locationInputValue,
     locationList,
     changeLocationValue,
@@ -43,6 +44,12 @@ export const LocationField = ({
         </Location>
     );
 
+    const handleKeyPress = e => {
+        if (e.key === 'Enter') {
+            submitForm(e);
+        }
+    }
+
     return (
         <InputFieldWrapper width="283px" data-test="input-field-wrapper">
             <InputWrapper>
@@ -51,6 +58,8 @@ export const LocationField = ({
                     placeholder="Location"
                     type="text"
                     onChange={e => changeValueInput(e.target.value)}
+                    onKeyPress={e => handleKeyPress(e)}
+                    data-test="location-input"
                 />
             </InputWrapper>
             <LocationListContainer>
@@ -77,6 +86,7 @@ LocationField.propTypes = {
     changeLocationValue: PropTypes.func,
     fetchLocation: PropTypes.func,
     setClickedLocation: PropTypes.func,
+    submitForm: PropTypes.func,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(LocationField);

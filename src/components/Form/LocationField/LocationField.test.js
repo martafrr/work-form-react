@@ -10,12 +10,14 @@ const setup = (props) => shallow(<LocationField {...props} />);
 describe('LocationField Component', () => {
     let component;
 
+    const mockSubmitForm = jest.fn();
     const mockProps = {
         locationInputValue: 'Ber',
         locationList: ['Bergen', 'Berlin'],
         changeLocationValue: jest.fn(),
         fetchLocation: jest.fn(),
         setClickedLocation: jest.fn(),
+        submitForm: mockSubmitForm,
     }
     beforeEach(() => {
         component = setup(mockProps);
@@ -35,5 +37,17 @@ describe('LocationField Component', () => {
         const propsErr = checkProps(LocationField, mockProps);
         
         expect(propsErr).toBe(undefined);
+    });
+
+    it('should call submitForm when key press', () => {
+        const input = findByTestAtr(component, 'location-input');
+        const event = {
+            preventDefault() {},
+            target: { value: 'value' },
+            key: 'Enter',
+        };
+        input.simulate('keypress', event);
+
+        expect(mockProps.submitForm).toHaveBeenCalled();
     });
 });
