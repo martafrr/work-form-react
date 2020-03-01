@@ -16,7 +16,7 @@ import {
 } from '../../../../store/selectors/formSelectors';
 import CategoryList from './CategoryList/index';
 
-const CategoriesMenu = ({ 
+export const CategoriesMenu = ({ 
     topCategoriesData,
     moreCategoriesData,
     resetCategories,
@@ -43,7 +43,7 @@ const CategoriesMenu = ({
     }
     
     return (
-        <CategoriesContainer >
+        <CategoriesContainer data-test="categories-container">
             <CategoryTitleWrapper>
                 <CategoryTitle>
                     Top Categories
@@ -86,9 +86,9 @@ const mapDispatchToProps = dispatch => ({
 });
 
 CategoriesMenu.propTypes = {
-    topCategoriesData: PropTypes.array,
-    moreCategoriesData: PropTypes.array,
-    categoriesChecked: PropTypes.array,
+    topCategoriesData: PropTypes.arrayOf(PropTypes.string),
+    moreCategoriesData: PropTypes.arrayOf(PropTypes.string),
+    categoriesChecked: PropTypes.arrayOf(PropTypes.string),
     resetCategories: PropTypes.func
 };
 

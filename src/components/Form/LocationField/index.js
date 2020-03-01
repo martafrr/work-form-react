@@ -15,7 +15,7 @@ import {
     Location,
 } from './LocationFieldStyles';
 
-const LocationField = ({
+export const LocationField = ({
     locationInputValue,
     locationList,
     changeLocationValue,
@@ -44,7 +44,7 @@ const LocationField = ({
     );
 
     return (
-        <InputFieldWrapper width="283px">
+        <InputFieldWrapper width="283px" data-test="input-field-wrapper">
             <InputWrapper>
                 <LocationInput 
                     value={locationInputValue}
@@ -72,7 +72,7 @@ const mapDispatchToProps = dispatch => ({
 });
 
 LocationField.propTypes = {
-    locationList: PropTypes.array,
+    locationList: PropTypes.arrayOf(PropTypes.string),
     locationInputValue: PropTypes.string,    
     changeLocationValue: PropTypes.func,
     fetchLocation: PropTypes.func,

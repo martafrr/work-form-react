@@ -1,19 +1,20 @@
 import React from 'react';
 import Adapter from 'enzyme-adapter-react-16';
 import { shallow, configure } from 'enzyme';
-import { SearchWorkForm } from './index';
-import { findByTestAtr, checkProps } from '../../../utils/test-utils';
+import { CategoriesMenu } from './index';
+import { findByTestAtr, checkProps } from '../../../../utils/test-utils';
 
 configure({adapter: new Adapter()});
-const setup = (props) => shallow(<SearchWorkForm {...props} />);
+const setup = (props) => shallow(<CategoriesMenu {...props} />);
 
-describe('SearchWorkForm Component', () => {
+describe('CategoriesMenu Component', () => {
     let component;
 
     const mockProps = {
-        location: 'Barcelona',
+        topCategoriesData: ['IT'],
+        moreCategoriesData: ['Advertising'],
         categoriesChecked: ['IT'],
-        clearForm: jest.fn()
+        resetCategories: jest.fn()
     }
     beforeEach(() => {
         component = setup(mockProps);
@@ -24,18 +25,13 @@ describe('SearchWorkForm Component', () => {
     });
  
     it('should render without errors', () => {
-        const wrapper = findByTestAtr(component, 'search-work-form');
+        const wrapper = findByTestAtr(component, 'categories-container');
 
         expect(wrapper.length).toBe(1);
     });
 
     describe('checking proptypes should not throw a warning', () => {
-        const expectedProps = {
-            location: 'Barcelona', 
-            categoriesChecked: ['IT'],
-            clearForm: jest.fn()
-        }
-        const propsErr = checkProps(SearchWorkForm, expectedProps);
+        const propsErr = checkProps(CategoriesMenu, mockProps);
         
         expect(propsErr).toBe(undefined);
     });

@@ -35,8 +35,8 @@ const CategoryList = ({
 
 CategoryList.propTypes = {    
     categoryType: PropTypes.string,
-    categoryData: PropTypes.array,
-    categoriesChecked: PropTypes.array,
+    categoryData: PropTypes.arrayOf(PropTypes.string),
+    categoriesChecked: PropTypes.arrayOf(PropTypes.string),
     onChange: PropTypes.func
 }
 

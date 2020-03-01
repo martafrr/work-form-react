@@ -52,7 +52,7 @@ const mapDispatchToProps = (dispatch) => ({
 
 KeywordField.propTypes = {
     location: PropTypes.string, 
-    categoriesChecked: PropTypes.array,
+    categoriesChecked: PropTypes.arrayOf(PropTypes.string),
     clearForm: PropTypes.func
 }
 
