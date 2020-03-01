@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import KeywordField from '../KeywordField/index';
 import LocationField from '../LocationField/index';
@@ -48,5 +49,11 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = (dispatch) => ({
     clearForm: () => dispatch(clearForm()),
 });
+
+KeywordField.propTypes = {
+    location: PropTypes.string, 
+    categoriesChecked: PropTypes.array,
+    clearForm: PropTypes.func
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(SearchWorkForm);

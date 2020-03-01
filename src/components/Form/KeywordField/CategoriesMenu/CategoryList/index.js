@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
     CategoryContainer,
     CategoryLabel,
@@ -32,5 +33,11 @@ const CategoryList = ({
     });;
 };
 
+CategoryList.propTypes = {    
+    categoryType: PropTypes.string,
+    categoryData: PropTypes.array,
+    categoriesChecked: PropTypes.array,
+    onChange: PropTypes.func
+}
 
 export default CategoryList;

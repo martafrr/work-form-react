@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import {
     CategoryTitleWrapper,
     CategoryTitle,
@@ -21,7 +22,7 @@ const CategoriesMenu = ({
     resetCategories,
     categoriesChecked,
 }) => {
-    const onChange = (e, categoryType) => {
+    const onChange = e => {
         if(categoriesChecked.indexOf(e.target.value) === -1) {
             resetCategories([...categoriesChecked, e.target.value]);
         } else {
@@ -83,5 +84,12 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
     resetCategories: (list, dataType) => dispatch(resetCategories(list, dataType)),
 });
+
+CategoriesMenu.propTypes = {
+    topCategoriesData: PropTypes.array,
+    moreCategoriesData: PropTypes.array,
+    categoriesChecked: PropTypes.array,
+    resetCategories: PropTypes.func
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(CategoriesMenu);

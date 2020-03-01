@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import InputFieldWrapper from '../../../UI-design-system/InputFieldWrapper';
 import { InputWrapper } from '../KeywordField/KeywordFieldStyles';
 import { 
@@ -69,5 +70,13 @@ const mapDispatchToProps = dispatch => ({
     fetchLocation: value => dispatch(fetchLocation(value)),
     setClickedLocation: location => dispatch(setClickedLocation(location)),
 });
+
+LocationField.propTypes = {
+    locationList: PropTypes.array,
+    locationInputValue: PropTypes.string,    
+    changeLocationValue: PropTypes.func,
+    fetchLocation: PropTypes.func,
+    setClickedLocation: PropTypes.func,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(LocationField);
