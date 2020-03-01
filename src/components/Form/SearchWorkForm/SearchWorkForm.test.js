@@ -15,6 +15,7 @@ describe('SearchWorkForm Component', () => {
         location: 'Barcelona',
         categoriesChecked: ['IT'],
         clearForm: mockClearForm,
+        keyword: 'Frontend Developer'
     }
     beforeEach(() => {
         component = setup(mockProps);
