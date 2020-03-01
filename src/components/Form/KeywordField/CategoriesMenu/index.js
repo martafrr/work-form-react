@@ -23,6 +23,7 @@ export const CategoriesMenu = ({
     categoriesChecked,
 }) => {
     const onChange = e => {
+        console.log('on change cat list')
         if(categoriesChecked.indexOf(e.target.value) === -1) {
             resetCategories([...categoriesChecked, e.target.value]);
         } else {

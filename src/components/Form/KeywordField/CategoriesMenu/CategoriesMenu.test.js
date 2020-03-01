@@ -36,14 +36,16 @@ describe('CategoriesMenu Component', () => {
         expect(propsErr).toBe(undefined);
     });
 
-    it('onChange should call resetCategories', () => {
-        const btn = findByTestAtr(component, 'search-all-btn');
-        const event = {
-            preventDefault() {},
-            target: { value: 'value' }
-        };
-        btn.simulate('click', event);
-
-        expect(mockProps.resetCategories).toHaveBeenCalled();
+    describe('onChange', () => {
+        it(' should call resetCategories', () => {
+            const btn = findByTestAtr(component, 'search-all-btn');
+            const event = {
+                preventDefault() {},
+                target: { value: 'value' }
+            };
+            btn.simulate('click', event);
+    
+            expect(mockProps.resetCategories).toHaveBeenCalled();
+        });
     });
 });
