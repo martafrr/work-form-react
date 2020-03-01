@@ -34,8 +34,7 @@ export const SearchAllCat = styled(Button)`
     margin-right: 0;
     margin-top: 0;
     
-    /* TODO: check */
-    &:focus ${Button} {
+    :focus {
         border: none;
     }
 `;
