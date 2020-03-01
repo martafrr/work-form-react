@@ -29,7 +29,7 @@ describe('SearchWorkForm Component', () => {
         expect(wrapper.length).toBe(1);
     });
 
-    describe('checking proptypes should not throw a warning', () => {
+    it('checking proptypes should not throw a warning', () => {
         const expectedProps = {
             location: 'Barcelona', 
             categoriesChecked: ['IT'],

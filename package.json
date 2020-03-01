@@ -50,7 +50,7 @@
   },
   "devDependencies": {
     "axios-mock-adapter": "^1.17.0",
-    "redux-mock-store": "^1.5.4",
+    "redux-mock-`store": "^1.5.4",
     "redux-promise-middleware": "^6.1.2"
   }
 }

@@ -30,9 +30,20 @@ describe('CategoriesMenu Component', () => {
         expect(wrapper.length).toBe(1);
     });
 
-    describe('checking proptypes should not throw a warning', () => {
+    it('checking proptypes should not throw a warning', () => {
         const propsErr = checkProps(CategoriesMenu, mockProps);
         
         expect(propsErr).toBe(undefined);
+    });
+
+    it('onChange should call resetCategories', () => {
+        const btn = findByTestAtr(component, 'search-all-btn');
+        const event = {
+            preventDefault() {},
+            target: { value: 'value' }
+        };
+        btn.simulate('click', event);
+
+        expect(mockProps.resetCategories).toHaveBeenCalled();
     });
 });

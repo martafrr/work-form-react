@@ -2,14 +2,9 @@ import React from 'react';
 import Adapter from 'enzyme-adapter-react-16';
 import { shallow, configure } from 'enzyme';
 import { KeywordField } from './index';
-import { findByTestAtr, testStore, checkProps } from '../../../utils/test-utils';
+import { findByTestAtr, checkProps } from '../../../utils/test-utils';
 
 configure({adapter: new Adapter()});
-const setup = (initialState = {}, props={}) => {
-    const mockStore = testStore(initialState)
-    const component = shallow(<KeywordField store={mockStore} {...props} />);
-    return component;
-};
 
 describe('KeywordField Component', () => {
     let component;
@@ -17,15 +12,19 @@ describe('KeywordField Component', () => {
     const useStateSpy = jest.spyOn(React, 'useState');
     useStateSpy.mockImplementation((init) => [init, setState]);
 
-  
     const mockChangeKeywordValue = jest.fn();
     const mockProps = {
         keywordValue: 'Frontend Developer',
         changeKeywordValue: mockChangeKeywordValue,
-    }
-    
+    };
+
+    const event = {
+        preventDefault() {},
+        target: { value: 'value' }
+    };
+
     beforeEach(() => {
-        component = setup({}, mockProps);
+        component = shallow(<KeywordField {...mockProps} />);
     });
 
     afterEach(() => {
@@ -38,28 +37,25 @@ describe('KeywordField Component', () => {
         expect(wrapper).not.toBeNull();
     });
 
+    it('checking proptypes should not throw a warning', () => {
+        const propsErr = checkProps(KeywordField, mockProps);
+        
+        expect(propsErr).toBe(undefined);
+    });
+
     it('should call changeKeywordValue when input changes', () => {
         const input = findByTestAtr(component, 'keyword-input');
-
-        input.simulate('change');
-
-        expect(mockChangeKeywordValue).toHaveBeenCalled();
-    });
-    
-    describe('checking proptypes', () => {
-        it('should not throw a warning', () => {
-            const propsErr = checkProps(KeywordField, mockProps);
-            
-            expect(propsErr).toBe(undefined);
-        });
+        input.simulate('change', event);
+        
+        const callback = mockChangeKeywordValue.mock.calls.length;
+        expect(callback).toBe(1);
     });
 
+    // TODO
     // it('categories button onClick changes state as expected', () => {
     //     const btn = findByTestAtr(component, 'toggle-btn');
 
-    //     btn.simulate('click', {
-    //         preventDefault: () => {},
-    //     });
+    //     btn.simulate('click', event);
 
     //     expect(setState).toHaveBeenCalled();
     // });

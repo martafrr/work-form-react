@@ -31,7 +31,7 @@ describe('LocationField Component', () => {
         expect(wrapper.length).toBe(1);
     });
 
-    describe('checking proptypes should not throw a warning', () => {
+    it('checking proptypes should not throw a warning', () => {
         const propsErr = checkProps(LocationField, mockProps);
         
         expect(propsErr).toBe(undefined);

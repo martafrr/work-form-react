@@ -48,7 +48,7 @@ export const CategoriesMenu = ({
                 <CategoryTitle>
                     Top Categories
                 </CategoryTitle>
-                <SearchAllCat onClick={checkAllCategories}>
+                <SearchAllCat onClick={checkAllCategories} data-test="search-all-btn">
                     Search in all categories
                 </SearchAllCat>
             </CategoryTitleWrapper>
