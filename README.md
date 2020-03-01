@@ -36,10 +36,16 @@ Why did I choose to use Redux?
 - it's strict about how code should be organized and makes it easier to maintain.
 - easy to debug because of its structure.
 
-
 ### Styled Components
 I have extracted the main reusable components in a design system folder.
 
 ### Responsive Design
 As the assignment had explicit width and height, I assumed that the app is only for Desktop view. Therefore I did not implement a Mobile, Tablet or Phablet design. 
+
+### Next steps
+The next steps would be to:
+- create some mockups to handle form errors 
+- create some mockups for mobile
+- cash the location results
+
 
