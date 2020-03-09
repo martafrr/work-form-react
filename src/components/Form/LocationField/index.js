@@ -25,6 +25,7 @@ export const LocationField = ({
 }) => {
     const clickLocale = e => {
         e.preventDefault();
+        e.target.focus();
         setClickedLocation(e.target.value);
     };
     const changeValueInput = value => {
