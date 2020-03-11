@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import SearchWorkForm from '../SearchWorkForm/index';
-import backgroundImg from '../../../assets/xing.png';
+import backgroundImg from '../../../assets/background-form.png';
 import H2 from '../../../UI-design-system/H2';
 
 const FormWrapperDiv = styled.div`
@@ -21,7 +21,6 @@ const FormWrapper = () => (
     <FormWrapperDiv data-test="form-wrapper">
         <FormContainer>
             <H2 firstLine={true}>For a better working life</H2>
-            <H2 firstLine={false}>The new XING Jobs</H2>
 
             <SearchWorkForm />
         </FormContainer>
