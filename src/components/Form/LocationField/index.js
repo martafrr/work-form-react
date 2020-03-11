@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import InputFieldWrapper from '../../../UI-design-system/InputFieldWrapper';
@@ -23,9 +23,11 @@ export const LocationField = ({
     fetchLocation,
     setClickedLocation,
 }) => {
+    const inputElement = useRef(null);
+
     const clickLocale = e => {
         e.preventDefault();
-        e.target.focus();
+        inputElement.current.focus();
         setClickedLocation(e.target.value);
     };
     const changeValueInput = value => {
@@ -55,6 +57,7 @@ export const LocationField = ({
         <InputFieldWrapper width="283px" data-test="input-field-wrapper">
             <InputWrapper>
                 <LocationInput 
+                    ref={inputElement}
                     value={locationInputValue}
                     placeholder="Location"
                     type="text"
